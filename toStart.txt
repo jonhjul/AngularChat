@@ -1,0 +1,9 @@
+
+cmd - app/js/
+node chatserver.js
+
+cmd 
+chatserver
+python.exe -m SimpleHTTPServer
+
+

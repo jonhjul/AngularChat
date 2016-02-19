@@ -1,0 +1,25 @@
+<h2>Welcome to chat!<h2>
+
+  <div ng-hide="loggedIn">
+    <input type="text" ng-model="nick" placeholder="Select a user name"></input>
+    <button ng-click="login()">Login</button>
+  </div>
+<!--
+<div>
+  <input type="text" ng-model="room" placeholder="Chanel name"></input>
+  <input type="text" ng-model="pass" placeholder="Password"></input>
+  <button ng-click="joinroom()">Join</button>
+</div>
+-->
+<ul>
+  <li>Create/Join Channel</li>
+  <li><input type="text" ng-model="room" placeholder="Chanel name"></input>  </li>
+  <li><input type="text" ng-model="pass" placeholder="Password"></input>  </li>
+  <li><button ng-click="joinroom()">Join</button></li>
+</ul>
+
+  <ul>
+    <li ng-repeat="room in rooms">
+        {{room.topic}}
+    </li>
+  </ul>

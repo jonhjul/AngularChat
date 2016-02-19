@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-
-<title>AngularChat</title>
-<script type='text/javascript' src='jquery-2.2.0.js'></script>
-<script type='text/javascript' src='kinetic-v5.1.0.js'></script>
-<script type='text/javascript' src='index.js'></script>
-
-<link rel="stylesheet" type="text/css" href="index.css">
-
-</head>
-
-
- 
-</body>
-
+<!doctype html>
+<html ng-app="ChatApp">
+  <head>
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Angular Chat</title>
+  </head>
+  <body>
+      <div ng-view></div>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-route/angular-route.min.js"></script>
+      <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+      <script src="app/js/main.js"></script>
+  </body>
 </html>
