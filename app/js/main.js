@@ -22,9 +22,14 @@ angular.module("ChatApp").controller("HomeCtrl", ["$scope", "$http",
       $scope.$apply();
       console.log(data);
     });
+    $scope.isRoomSelected = false;
     $scope.channels = 0;
-
-    $scope.selectedRoom = "";
+    $scope.selectedRoom = function(room) {
+      console.log();
+      $scope.isRoomSelected = true;
+      $scope.roomSelected = room;
+      console.log("function ran");
+    };
 
     $scope.nick = "";
     $scope.login = function() {
@@ -38,15 +43,16 @@ angular.module("ChatApp").controller("HomeCtrl", ["$scope", "$http",
       });
     };
 
-      $scope.joinroom = function() {
+    $scope.joinroom = function() {
       socket.emit("joinroom", {
         room: $scope.room,
         pass: $scope.pass
       }, function(canIjoin) {
         console.log("canIjoin: " + canIjoin);
         socket.emit("rooms");
-        if(canIjoin){
+        if (canIjoin) {
           $scope.channels += 1;
+          $scope.$apply();
         }
       });
     };
@@ -55,6 +61,15 @@ angular.module("ChatApp").controller("HomeCtrl", ["$scope", "$http",
 ]);
 
 angular.module("ChatApp").controller("RoomCtrl", ["$scope", "$http",
-function($scope, $http) {
-
-}]);
+  function($scope, $http) {
+    $scope.sendTextMsg = "";
+    var socket = io.connect("http://localhost:8080");
+    $scope.sendMsg = function() {
+      socket.emit("sendmsg", {
+        msg: $scope.sendTextMsg,
+        roomName: $scope.roomName
+      },function(data){
+        console.log(data);
+      })}
+}
+]);

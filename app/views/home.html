@@ -7,19 +7,13 @@
   <button ng-click="login()">Login</button>
 </div>
 
-
-<div ng-include="views/room.html"> </div>
-
-<ul>
-  <li ng-repeat="room in rooms">
-    <div ng-click="selectedRoom = room">
-      <a href="">
-           {{room.topic}}
-        </a>
-    </div>
-  </li>
-</ul>
-
+  <ul>
+    <li ng-repeat="room in rooms">
+      <div ng-click="selectedRoom(room)">
+             {{room.topic}}
+      </div>
+    </li>
+  </ul>
 
 <div ng-show="loggedIn">
   <ul>
@@ -34,4 +28,14 @@
       <button ng-click="joinroom()">Join</button>
     </li>
   </ul>
+</div>
+
+<div ng-controller="RoomCtrl">
+  <div class="ChatRoom" ng-show="channels > 0">
+    <h2>{{selectedRoom.topic}}<h2>
+    <textarea ng-disabled="true" ng-model="selectedRoom.messageHistory"></textarea>
+    <form ng-submit="sendMsg()" ng-controller="RoomCtrl">
+       <input type="text" ng-model="sendTextmsg"/>
+    </form>
+  </div>
 </div>
