@@ -1,25 +1,37 @@
-<h2>Welcome to chat!<h2>
+<h2 ng-hide="loggedIn">Welcome to chat!</h2>
+<p ng-hide="loggedIn">Log in to continue</p>
+<h1 ng-show="loggedIn">Channels</h1>
 
-  <div ng-hide="loggedIn">
-    <input type="text" ng-model="nick" placeholder="Select a user name"></input>
-    <button ng-click="login()">Login</button>
-  </div>
-<!--
-<div>
-  <input type="text" ng-model="room" placeholder="Chanel name"></input>
-  <input type="text" ng-model="pass" placeholder="Password"></input>
-  <button ng-click="joinroom()">Join</button>
+<div ng-hide="loggedIn">
+  <input type="text" ng-model="nick" placeholder="Select a user name"></input>
+  <button ng-click="login()">Login</button>
 </div>
--->
+
+
+<div ng-include="views/room.html"> </div>
+
 <ul>
-  <li>Create/Join Channel</li>
-  <li><input type="text" ng-model="room" placeholder="Chanel name"></input>  </li>
-  <li><input type="text" ng-model="pass" placeholder="Password"></input>  </li>
-  <li><button ng-click="joinroom()">Join</button></li>
+  <li ng-repeat="room in rooms">
+    <div ng-click="selectedRoom = room">
+      <a href="">
+           {{room.topic}}
+        </a>
+    </div>
+  </li>
 </ul>
 
+
+<div ng-show="loggedIn">
   <ul>
-    <li ng-repeat="room in rooms">
-        {{room.topic}}
+    <li>Create/Join Channel</li>
+    <li>
+      <input type="text" ng-model="room" placeholder="Chanel name"></input>
+    </li>
+    <li>
+      <input type="text" ng-model="pass" placeholder="Password"></input>
+    </li>
+    <li>
+      <button ng-click="joinroom()">Join</button>
     </li>
   </ul>
+</div>

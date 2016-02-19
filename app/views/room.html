@@ -1,13 +1,5 @@
-<h2>Rooms<h2>
+<div class="ChatRoom">
+<h2>{{roomName}}<h2>
+<textarea ng-model="messageHistory"></textarea>
 
-<div>
-  <input type="text" ng-model="room" placeholder="Chanel name"></input>
-  <input type="text" ng-model="pass"></input>
-  <button ng-click="joinroom()">Join</button>
 </div>
-
-  <ul>
-    <li ng-repeat="room in rooms">
-        {{room.topic}}
-    </li>
-  </ul>
